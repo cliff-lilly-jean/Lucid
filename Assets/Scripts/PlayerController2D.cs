@@ -40,9 +40,9 @@ public class PlayerController2D : MonoBehaviour
         _moveDirection = _gameControls.Player.Move.ReadValue<Vector2>();
 
         // Move the sprite
-        _rb.velocity = new Vector2(_moveDirection.x, _rb.velocity.y) * _moveSpeed;
+        _rb.velocity = new Vector2(_moveDirection.x, _moveDirection.y).normalized * _moveSpeed;
 
-        // TODO: Flip the sprite
+        // TODO: Flip the sprite on left or right move direction
     }
 
     private void OnEnable()
