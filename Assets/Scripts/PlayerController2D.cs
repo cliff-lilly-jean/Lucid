@@ -6,29 +6,38 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController2D : MonoBehaviour
 {
-
-    private Rigidbody2D _rb;
+    [Header("Unity Components")]
+    private Rigidbody2D _rigidbody;
     private Vector2 _moveDirection;
     private GameControls _gameControls;
+    private SpriteRenderer _spriteRenderer;
 
+    [Header("Float")]
     [SerializeField] private float _moveSpeed;
+
+    [Header("Bool")]
+    private bool _isSpriteFlipped = false;
 
     private void Awake()
     {
         _gameControls = new GameControls();
+
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        if (_spriteRenderer == null)
+        {
+            Debug.LogWarning("no spriterender on child component");
+        }
     }
 
 
-    // Start is called before the first frame update
     void Start()
     {
         _gameControls.Player.Move.performed += _ => Move();
 
-        _rb = GetComponent<Rigidbody2D>();
+        _rigidbody = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (_moveDirection.sqrMagnitude == 0) return;
         Move();
@@ -40,9 +49,25 @@ public class PlayerController2D : MonoBehaviour
         _moveDirection = _gameControls.Player.Move.ReadValue<Vector2>();
 
         // Move the sprite
-        _rb.velocity = new Vector2(_moveDirection.x, _moveDirection.y).normalized * _moveSpeed;
+        _rigidbody.velocity = new Vector2(_moveDirection.x, _moveDirection.y).normalized * _moveSpeed * Time.deltaTime;
 
-        // TODO: Flip the sprite on left or right move direction
+        // flip the sprite
+        // face left
+        if (_moveDirection.x < 0 || _isSpriteFlipped == true)
+        {
+
+            _spriteRenderer.flipX = true;
+            _isSpriteFlipped = true;
+        }
+
+        // face right
+        if (_moveDirection.x > 0 || _isSpriteFlipped == false)
+        {
+            // the player is facing right
+            _spriteRenderer.flipX = false;
+            _isSpriteFlipped = false;
+        }
+
     }
 
     private void OnEnable()
