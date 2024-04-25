@@ -25,7 +25,7 @@ public class PlayerController2D : MonoBehaviour
         _spriteRenderer = GetComponent<SpriteRenderer>();
         if (_spriteRenderer == null)
         {
-            Debug.LogWarning("no spriterender on child component");
+            Debug.LogWarning("no spriterender component");
         }
     }
 

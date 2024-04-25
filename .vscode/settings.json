@@ -57,6 +57,7 @@
         "Temp/": true
     },
     "dotnet.defaultSolution": "Lucid.sln",
-    "editor.fontSize": 14,
-    "editor.formatOnSave": true
+    "editor.fontSize": 16,
+    "editor.formatOnSave": true,
+    "editor.fontFamily": "Fira Code, Rec Mono Casual, Fantasque Sans Mono, Comic Neue, Cascadia Code, Monaco, Fira Code, monospace "
 }
