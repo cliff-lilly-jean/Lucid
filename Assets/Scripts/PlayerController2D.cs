@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,8 @@ public class PlayerController2D : MonoBehaviour
     private Vector2 _moveDirection;
     private GameControls _gameControls;
     private SpriteRenderer _spriteRenderer;
+    private BoxCollider2D _boxCollider;
+    private RaycastHit2D _raycastHit;
 
     [Header("Float")]
     [SerializeField] private float _moveSpeed;
@@ -35,6 +38,7 @@ public class PlayerController2D : MonoBehaviour
         _gameControls.Player.Move.performed += _ => Move();
 
         _rigidbody = GetComponent<Rigidbody2D>();
+        _boxCollider = GetComponent<BoxCollider2D>();
     }
 
     void FixedUpdate()
@@ -48,8 +52,17 @@ public class PlayerController2D : MonoBehaviour
         // read the controls data
         _moveDirection = _gameControls.Player.Move.ReadValue<Vector2>();
 
-        // Move the sprite
-        _rigidbody.velocity = new Vector2(_moveDirection.x, _moveDirection.y).normalized * _moveSpeed * Time.deltaTime;
+        // Check if object can be passed collided with
+        _raycastHit = Physics2D.BoxCast(transform.position, _boxCollider.size, 0, new Vector2(0, _moveDirection.y), Mathf.Abs(_moveDirection.y * Time.deltaTime), LayerMask.GetMask("Actor", "Blocking"));
+
+        // Make sure we can move in this direction, by casting a box there first. if the box returns null, we're free to move
+        if (_raycastHit.collider == null)
+        {
+            // Move the sprite
+            _rigidbody.velocity = new Vector2(_moveDirection.x, _moveDirection.y).normalized * _moveSpeed * Time.deltaTime;
+        }
+
+
 
         // flip the sprite
         // face left
