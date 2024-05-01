@@ -52,7 +52,7 @@ public class PlayerController2D : MonoBehaviour
         // read the controls data
         _moveDirection = _gameControls.Player.Move.ReadValue<Vector2>();
 
-        // Check if object can be passed collided with
+        // Check if object can be passed or collided with
         _raycastHit = Physics2D.BoxCast(transform.position, _boxCollider.size, 0, new Vector2(0, _moveDirection.y), Mathf.Abs(_moveDirection.y * Time.deltaTime), LayerMask.GetMask("Actor", "Blocking"));
 
         // Make sure we can move in this direction, by casting a box there first. if the box returns null, we're free to move
@@ -60,27 +60,40 @@ public class PlayerController2D : MonoBehaviour
         {
             // Move the sprite
             _rigidbody.velocity = new Vector2(_moveDirection.x, _moveDirection.y).normalized * _moveSpeed * Time.deltaTime;
+
+            if (_moveDirection.x > 0.1f)
+            {
+                _isSpriteFlipped = false;
+                UpdateMoveDirection(_moveDirection);
+            }
+
+            if (_moveDirection.x < -0.1f)
+            {
+                _isSpriteFlipped = true;
+                UpdateMoveDirection(_moveDirection);
+            }
         }
 
+    }
 
-
-        // flip the sprite
+    private void UpdateMoveDirection(Vector2 moveDirection)
+    {
         // face left
-        if (_moveDirection.x < 0 || _isSpriteFlipped == true)
+        if (moveDirection.x < 0 || _isSpriteFlipped == true)
         {
-
-            _spriteRenderer.flipX = true;
-            _isSpriteFlipped = true;
+            FlipSprite(_isSpriteFlipped, _spriteRenderer);
         }
 
         // face right
-        if (_moveDirection.x > 0 || _isSpriteFlipped == false)
+        if (moveDirection.x > 0 || _isSpriteFlipped == false)
         {
-            // the player is facing right
-            _spriteRenderer.flipX = false;
-            _isSpriteFlipped = false;
+            FlipSprite(_isSpriteFlipped, _spriteRenderer);
         }
+    }
 
+    private void FlipSprite(bool isSpriteFlipped, SpriteRenderer spriteRenderer)
+    {
+        spriteRenderer.flipX = isSpriteFlipped;
     }
 
     private void OnEnable()
