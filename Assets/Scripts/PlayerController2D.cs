@@ -10,6 +10,7 @@ public class PlayerController2D : MonoBehaviour
     private Rigidbody2D _rb;
     private Vector2 _moveDirection;
     private GameControls _gameControls;
+    private SpriteRenderer _spriteRenderer;
 
     [SerializeField] private float _moveSpeed;
 
@@ -25,6 +26,7 @@ public class PlayerController2D : MonoBehaviour
         _gameControls.Player.Move.performed += _ => Move();
 
         _rb = GetComponent<Rigidbody2D>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -36,13 +38,22 @@ public class PlayerController2D : MonoBehaviour
 
     private void Move()
     {
-        // read the controls data
+        // Read the controls data
         _moveDirection = _gameControls.Player.Move.ReadValue<Vector2>();
 
         // Move the sprite
         _rb.velocity = new Vector2(_moveDirection.x, _moveDirection.y).normalized * _moveSpeed;
 
-        // TODO: Flip the sprite on left or right move direction
+        // Flip the sprite on left or right based on move direction
+        if (_rb.velocity.x > 0)
+        {
+            _spriteRenderer.flipX = false;
+        }
+
+        if (_rb.velocity.x < 0)
+        {
+            _spriteRenderer.flipX = true;
+        }
     }
 
     private void OnEnable()
