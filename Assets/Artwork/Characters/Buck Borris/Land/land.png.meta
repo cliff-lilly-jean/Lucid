@@ -100,9 +100,9 @@ TextureImporter:
       name: land_0
       rect:
         serializedVersion: 2
-        x: 31
+        x: 36
         y: 23
-        width: 18
+        width: 10
         height: 19
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -121,9 +121,9 @@ TextureImporter:
       name: land_1
       rect:
         serializedVersion: 2
-        x: 31
+        x: 36
         y: 0
-        width: 18
+        width: 10
         height: 18
       alignment: 0
       pivot: {x: 0.5, y: 0.5}

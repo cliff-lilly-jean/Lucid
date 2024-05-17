@@ -100,9 +100,9 @@ TextureImporter:
       name: damaged_0
       rect:
         serializedVersion: 2
-        x: 31
+        x: 34
         y: 23
-        width: 19
+        width: 13
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -121,12 +121,12 @@ TextureImporter:
       name: damaged_1
       rect:
         serializedVersion: 2
-        x: 31
+        x: 34
         y: 0
-        width: 39
+        width: 13
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.48063308, y: 0.41148752}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

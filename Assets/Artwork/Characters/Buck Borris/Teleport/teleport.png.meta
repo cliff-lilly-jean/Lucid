@@ -100,12 +100,12 @@ TextureImporter:
       name: teleport_0
       rect:
         serializedVersion: 2
-        x: 31
+        x: 36
         y: 93
-        width: 18
+        width: 11
         height: 20
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -121,12 +121,12 @@ TextureImporter:
       name: teleport_1
       rect:
         serializedVersion: 2
-        x: 31
+        x: 37
         y: 69
-        width: 17
+        width: 8
         height: 17
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -142,12 +142,12 @@ TextureImporter:
       name: teleport_2
       rect:
         serializedVersion: 2
-        x: 31
+        x: 39
         y: 46
-        width: 18
+        width: 6
         height: 18
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -163,12 +163,12 @@ TextureImporter:
       name: teleport_3
       rect:
         serializedVersion: 2
-        x: 31
+        x: 39
         y: 23
-        width: 18
+        width: 6
         height: 19
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -184,9 +184,30 @@ TextureImporter:
       name: teleport_4
       rect:
         serializedVersion: 2
-        x: 43
-        y: 11
-        width: 1
+        x: 40
+        y: 8
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67f1b91adcea943cdbf7a4f1ccb67ad5
+      internalID: 1307382638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: teleport_5
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 76
+        width: 36
         height: 1
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -195,8 +216,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 67f1b91adcea943cdbf7a4f1ccb67ad5
-      internalID: 1307382638
+      spriteID: 437034e8da43c4584a6e798f318da2d6
+      internalID: -1188408434
       vertices: []
       indices: 
       edges: []
@@ -217,6 +238,7 @@ TextureImporter:
       teleport_2: 502901853
       teleport_3: 468215268
       teleport_4: 1307382638
+      teleport_5: -1188408434
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -100,9 +100,9 @@ TextureImporter:
       name: blast_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 14
         y: 115
-        width: 116
+        width: 102
         height: 19
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -121,9 +121,9 @@ TextureImporter:
       name: blast_1
       rect:
         serializedVersion: 2
-        x: 0
+        x: 4
         y: 92
-        width: 69
+        width: 112
         height: 19
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -142,9 +142,9 @@ TextureImporter:
       name: blast_2
       rect:
         serializedVersion: 2
-        x: 0
+        x: 2
         y: 69
-        width: 116
+        width: 114
         height: 19
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -163,9 +163,9 @@ TextureImporter:
       name: blast_3
       rect:
         serializedVersion: 2
-        x: 0
+        x: 3
         y: 46
-        width: 117
+        width: 114
         height: 19
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -184,9 +184,9 @@ TextureImporter:
       name: blast_4
       rect:
         serializedVersion: 2
-        x: 0
+        x: 2
         y: 23
-        width: 121
+        width: 119
         height: 19
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -205,9 +205,9 @@ TextureImporter:
       name: blast_5
       rect:
         serializedVersion: 2
-        x: 0
+        x: 37
         y: 0
-        width: 121
+        width: 84
         height: 19
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
