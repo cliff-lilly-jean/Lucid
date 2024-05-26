@@ -6,14 +6,26 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController2D : MonoBehaviour
 {
-
+    // UNITY COMPONENTS
     private Rigidbody2D _rb;
     private Vector2 _moveDirection;
-    private GameControls _gameControls;
     private SpriteRenderer _spriteRenderer;
 
+    // CONTROLS
+    private GameControls _gameControls;
+
+    // ANIMATIONS
+    private Animator _animator;
+
+    // MOVEMENT
     [SerializeField] private float _moveSpeed;
     [SerializeField] private float _moveSpeedMultiplier;
+
+    // ACTIONS
+    public InputAction attackAction;
+
+
+
 
     private void Awake()
     {
@@ -25,14 +37,18 @@ public class PlayerController2D : MonoBehaviour
     void Start()
     {
         _gameControls.Player.Move.performed += _ => Move();
+        _gameControls.Player.Attack.performed += _ => Attack();
+
 
         _rb = GetComponent<Rigidbody2D>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
+        _animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
+        // Movement
         if (_moveDirection.sqrMagnitude == 0) return;
         Move();
     }
@@ -46,6 +62,31 @@ public class PlayerController2D : MonoBehaviour
         _rb.velocity = new Vector2(_moveDirection.x, _moveDirection.y).normalized * _moveSpeed * _moveSpeedMultiplier * Time.deltaTime;
 
         // Flip the sprite on left or right based on move direction
+        FlipSprite(_rb);
+
+        // Run on keypress
+        Run(_rb);
+    }
+
+    private void Attack()
+    {
+        _animator.SetBool("attack", true);
+    }
+
+    private void Run(Rigidbody2D rb)
+    {
+        if (Mathf.Abs(_rb.velocity.x) > 0.01 || Mathf.Abs(_rb.velocity.y) > 0.01)
+        {
+            _animator.SetBool("isMoving", true);
+        }
+        else
+        {
+            _animator.SetBool("isMoving", false);
+        }
+    }
+
+    private void FlipSprite(Rigidbody2D rb)
+    {
         if (_rb.velocity.x > 0)
         {
             _spriteRenderer.flipX = false;
@@ -56,6 +97,7 @@ public class PlayerController2D : MonoBehaviour
             _spriteRenderer.flipX = true;
         }
     }
+
 
     private void OnEnable()
     {
