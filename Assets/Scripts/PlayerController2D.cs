@@ -21,17 +21,11 @@ public class PlayerController2D : MonoBehaviour
     [SerializeField] private float _moveSpeed;
     [SerializeField] private float _moveSpeedMultiplier;
 
-    // ACTIONS
-    public InputAction attackAction;
-
-
-
-
+    // UNITY METHODS
     private void Awake()
     {
         _gameControls = new GameControls();
     }
-
 
     // Start is called before the first frame update
     void Start()
@@ -53,6 +47,18 @@ public class PlayerController2D : MonoBehaviour
         Move();
     }
 
+    private void OnEnable()
+    {
+        _gameControls.Enable();
+    }
+
+    private void OnDisable()
+    {
+        _gameControls.Disable();
+    }
+
+
+    // CUSTOM METHODS
     private void Move()
     {
         // Read the controls data
@@ -71,6 +77,9 @@ public class PlayerController2D : MonoBehaviour
     private void Attack()
     {
         _animator.SetBool("attack", true);
+        // Play a random attack animation from the list of attack animations
+        // Detect enemies in the range of the attack
+        // Damage the enemies in the range
     }
 
     private void Run(Rigidbody2D rb)
@@ -97,17 +106,4 @@ public class PlayerController2D : MonoBehaviour
             _spriteRenderer.flipX = true;
         }
     }
-
-
-    private void OnEnable()
-    {
-        _gameControls.Enable();
-    }
-
-    private void OnDisable()
-    {
-        _gameControls.Disable();
-    }
-
-
 }
