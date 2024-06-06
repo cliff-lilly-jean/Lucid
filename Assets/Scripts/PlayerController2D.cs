@@ -70,13 +70,14 @@ public class PlayerController2D : MonoBehaviour
         // Flip the sprite on left or right based on move direction
         FlipSprite(_rb);
 
-        // Run on keypress
+        // Run animation on keypress
         Run(_rb);
     }
 
     private void Attack()
     {
         _animator.SetBool("attack", true);
+
         // Play a random attack animation from the list of attack animations
         // Detect enemies in the range of the attack
         // Damage the enemies in the range
